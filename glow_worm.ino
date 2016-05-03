@@ -1,25 +1,16 @@
 #include "FastLED.h"
 
-// FastLED "100-lines-of-code" demo reel, showing just a few 
-// of the kinds of animation patterns you can quickly and easily 
-// compose using FastLED.  
-//
-// This example also shows one easy way to define multiple 
-// animations patterns and have them automatically rotate.
-//
-// -Mark Kriegsman, December 2014
-
 #if FASTLED_VERSION < 3001000
 #error "Requires FastLED 3.1 or later; check github for latest code."
 #endif
-#define PIR_PIN_1   6
-#define PIR_PIN_2   7
-#define PIR_PIN_3   8
-#define PIR_PIN_4   9
-#define LEDS_PIN_1    10
+#define PIR_PIN_0   6
+#define PIR_PIN_1   7
+#define PIR_PIN_2   8
+#define PIR_PIN_3   9
+#define LEDS_PIN_0    13
+#define LEDS_PIN_1    12
 #define LEDS_PIN_2    11
-#define LEDS_PIN_3    12
-#define LEDS_PIN_4    13
+#define LEDS_PIN_3    10
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
 #define NUM_PIRS    4
@@ -45,16 +36,16 @@ int randomaddsat=0;
 void setup() {
 
   //Manually define which pins are at which pirs
-  pir_pins[0]=PIR_PIN_1;
-  pir_pins[1]=PIR_PIN_2;
-  pir_pins[2]=PIR_PIN_3;
-  pir_pins[3]=PIR_PIN_4;
+  pir_pins[0]=PIR_PIN_0;
+  pir_pins[1]=PIR_PIN_1;
+  pir_pins[2]=PIR_PIN_2;
+  pir_pins[3]=PIR_PIN_3;
   
   // tell FastLED about the LED strip configuration
-  controllers[0] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_1>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-  controllers[1] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_2>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-  controllers[2] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_3>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-  controllers[3] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_4>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  controllers[0] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_0>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  controllers[1] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_1>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  controllers[2] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_2>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  controllers[3] = &FastLED.addLeds<LED_TYPE,LEDS_PIN_3>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
 
   for (int i = 0; i < NUM_PIRS; ++i)
   {
